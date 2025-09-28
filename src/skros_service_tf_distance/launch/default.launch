@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="from_tf"     default="/world"/>
+    <arg name="to_tf"     default="/gasket_up"/>
+    <arg name="distance"     default="/distance"/>
+
+    <node name="safety_manager" pkg="skros_service_tf_distance" type="distance.py" output="screen" >
+        <param name="from_tf"   type="str"  value="$(arg from_tf)"/>
+        <param name="to_tf"   type="str"  value="$(arg to_tf)"/>
+        <param name="distance"   type="str"  value="$(arg distance)"/>
+    </node>
+
+
+
+</launch>

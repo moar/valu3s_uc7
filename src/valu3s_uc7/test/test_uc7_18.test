@@ -1,0 +1,43 @@
+<launch>
+  <!-- Use sim clock-->
+  <param name="/use_sim_time" value="true" />
+  <!-- Start issac sim and valu3s  simulation-->
+  <include file="$(find simulation)/launch/default.launch">
+  </include>
+  <!-- Run mqtt brdige to communicate with ULISES-->
+
+  <include file="$(find mqtt_bridge)/launch/demo.launch">
+  </include>
+
+
+  <!-- Run Ros distance service that send distances as topics using TF-->
+  <include file="$(find skros_service_tf_distance)/launch/default_demo.launch">
+  </include>
+  <!-- Start Run Moveit for iiwa Simulation Robot -->
+  <include file="$(find iiwa_moveit_config)/launch/default.launch">
+  </include>
+  <!-- rosbag-->
+  <node pkg="rosbag" type="record" name="rosbag_record"
+       args="record -a -o froga_rostest.bag"/>
+  <!-- Ejecutar los tests con rostest -->
+  <param name="result_file" value="rostest.xml"/>
+
+  <arg name="node_start_delay" default="20" />
+  <test  test-name="uc7_func_normal"  pkg="valu3s_uc7" type="test_uc7_func_normal.py" cwd="node" time-limit="1000.0"/>
+  <test  test-name="uc7_3"  pkg="valu3s_uc7" type="test_uc7_door_not_opening.py" cwd="node" time-limit="1000.0"/>
+  <test  test-name="uc7_4"  pkg="valu3s_uc7" type="test_uc7_func_normal.py" cwd="node" time-limit="1000.0"/>
+  <test  test-name="uc7_5"  pkg="valu3s_uc7" type="test_uc7_door_not_opening.py" cwd="node" time-limit="1000.0"/>
+  <test  test-name="uc7_6"  pkg="valu3s_uc7" type="test_uc7_func_normal.py" cwd="node" time-limit="1000.0"/>
+  <test  test-name="uc7_7"  pkg="valu3s_uc7" type="test_uc7_door_not_opening.py" cwd="node" time-limit="1000.0"/>
+  <test  test-name="uc7_8"  pkg="valu3s_uc7" type="test_uc7_func_normal.py" cwd="node" time-limit="1000.0"/>
+  <test  test-name="uc7_9"  pkg="valu3s_uc7" type="test_uc7_door_not_opening.py" cwd="node" time-limit="1000.0"/>
+  <test  test-name="uc7_10"  pkg="valu3s_uc7" type="test_uc7_func_normal.py" cwd="node" time-limit="1000.0"/>
+  <test  test-name="uc7_11"  pkg="valu3s_uc7" type="test_uc7_door_not_opening.py" cwd="node" time-limit="1000.0"/>
+  <test  test-name="uc7_12"  pkg="valu3s_uc7" type="test_uc7_func_normal.py" cwd="node" time-limit="1000.0"/>
+  <test  test-name="uc7_13"  pkg="valu3s_uc7" type="test_uc7_door_not_opening.py" cwd="node" time-limit="1000.0"/>
+  <test  test-name="uc7_14"  pkg="valu3s_uc7" type="test_uc7_func_normal.py" cwd="node" time-limit="1000.0"/>
+  <test  test-name="uc7_15"  pkg="valu3s_uc7" type="test_uc7_door_not_opening.py" cwd="node" time-limit="1000.0"/>
+  <test  test-name="uc7_16"  pkg="valu3s_uc7" type="test_uc7_func_normal.py" cwd="node" time-limit="1000.0"/>
+  <test  test-name="uc7_17"  pkg="valu3s_uc7" type="test_uc7_door_not_opening.py" cwd="node" time-limit="1000.0"/>
+  <test  test-name="uc7_18"  pkg="valu3s_uc7" type="test_uc7_func_normal.py" cwd="node" time-limit="1000.0"/>
+</launch>

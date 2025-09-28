@@ -1,0 +1,7 @@
+<launch>
+  <!-- Ejecutar los tests con rostest -->
+   <param name="result_file" value="rostest.xml"/>
+
+  <test  test-name="uc7_bat"  pkg="valu3s_uc7" type="test_uc7_bat.py"/>
+
+</launch>

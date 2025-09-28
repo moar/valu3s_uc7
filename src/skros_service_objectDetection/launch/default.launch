@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+    <node name="objectDetection" pkg="skros_service_objectDetection" type="detector.py" output="screen" cwd="node">
+    </node>
+</launch>

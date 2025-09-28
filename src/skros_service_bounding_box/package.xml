@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>skros_service_bounding_box</name>
+  <version>0.0.0</version>
+  <description>The skros_service_bounding_box package</description>
+  <maintainer email="jaagirre@mondragon.edu">joseba</maintainer>
+
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>rospy</exec_depend>
+
+
+
+  <export>
+  </export>
+</package>

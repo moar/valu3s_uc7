@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- Load camera cam1 -->
+    <!-- Get serial of realsense camera using "rs-enumerate-devices"-->
+
+    <group ns="human_dist_neck2fridge" >
+        <include file="$(find skros_service_tf_distance)/launch/default.launch">
+        <arg name="from_tf"     default="/box"/>
+        <arg name="to_tf"       default="/Neck"/>
+        <arg name="distance"    default="/human_dist_neck2fridge"/>
+        </include>
+    </group>
+
+<!-- ============================== HUMAN2rOBOTfINGER ==================================== -->
+    <group ns="human_dist_neck2gripper" >
+        <include file="$(find skros_service_tf_distance)/launch/default.launch">
+        <arg name="from_tf"     default="/finger_link_1"/>
+        <arg name="to_tf"       default="/Hips"/>
+        <arg name="distance"    default="/human_dist_neck2gripper"/>
+        </include>
+    </group>
+    <group ns="human_dist_rightarm2gripper" >
+        <include file="$(find skros_service_tf_distance)/launch/default.launch">
+        <arg name="from_tf"     default="/finger_link_1"/>
+        <arg name="to_tf"       default="/RightArm"/>
+        <arg name="distance"    default="/human_dist_rightarm2gripper"/>
+        </include>
+    </group>
+    <group ns="human_dist_leftarm2gripper" >
+        <include file="$(find skros_service_tf_distance)/launch/default.launch">
+        <arg name="from_tf"     default="/finger_link_1"/>
+        <arg name="to_tf"       default="/LeftArm"/>
+        <arg name="distance"    default="/human_dist_leftarm2gripper"/>
+        </include>
+    </group>
+    <group ns="human_dist_righthand2gripper" >
+        <include file="$(find skros_service_tf_distance)/launch/default.launch">
+        <arg name="from_tf"     default="/finger_link_1"/>
+        <arg name="to_tf"       default="/RightHand"/>
+        <arg name="distance"    default="/human_dist_righthand2gripper"/>
+        </include>
+    </group>
+    <group ns="human_dist_lefthand2gripper" >
+        <include file="$(find skros_service_tf_distance)/launch/default.launch">
+        <arg name="from_tf"     default="/finger_link_1"/>
+        <arg name="to_tf"       default="/LeftHand"/>
+        <arg name="distance"    default="/human_dist_lefthand2gripper"/>
+        </include>
+    </group>
+
+    <group ns="human_dist_rightleg2gripper" >
+        <include file="$(find skros_service_tf_distance)/launch/default.launch">
+        <arg name="from_tf"     default="/finger_link_1"/>
+        <arg name="to_tf"       default="/RightLeg"/>
+        <arg name="distance"    default="/human_dist_rightleg2gripper"/>
+        </include>
+    </group>
+    <group ns="human_dist_leftleg2gripper" >
+        <include file="$(find skros_service_tf_distance)/launch/default.launch">
+        <arg name="from_tf"     default="/finger_link_1"/>
+        <arg name="to_tf"       default="/LeftLeg"/>
+        <arg name="distance"    default="/human_dist_leftleg2gripper"/>
+        </include>
+    </group>
+<!-- ###################################################################################################### -->
+<!-- ============================== HUMAN2IIWA_LINK4 ==================================== -->
+    <group ns="human_dist_neck2iiwa_link_4" >
+        <include file="$(find skros_service_tf_distance)/launch/default.launch">
+        <arg name="from_tf"     default="/iiwa_link_4"/>
+        <arg name="to_tf"       default="/Neck"/>
+        <arg name="distance"    default="/human_dist_neck2iiwa_link_4"/>
+        </include>
+    </group>
+    <group ns="human_dist_rightarm2iiwa_link_4" >
+        <include file="$(find skros_service_tf_distance)/launch/default.launch">
+        <arg name="from_tf"     default="/iiwa_link_4"/>
+        <arg name="to_tf"       default="/RightArm"/>
+        <arg name="distance"    default="/human_dist_rightarm2iiwa_link_4"/>
+        </include>
+    </group>
+    <group ns="human_dist_leftarm2iiwa_link_4" >
+        <include file="$(find skros_service_tf_distance)/launch/default.launch">
+        <arg name="from_tf"     default="/iiwa_link_4"/>
+        <arg name="to_tf"       default="/LeftArm"/>
+        <arg name="distance"    default="/human_dist_leftarm2iiwa_link_4"/>
+        </include>
+    </group>
+    <group ns="human_dist_righthand2iiwa_link_4" >
+        <include file="$(find skros_service_tf_distance)/launch/default.launch">
+        <arg name="from_tf"     default="/iiwa_link_4"/>
+        <arg name="to_tf"       default="/RightHand"/>
+        <arg name="distance"    default="/human_dist_righthand2iiwa_link_4"/>
+        </include>
+    </group>
+    <group ns="human_dist_lefthand2iiwa_link_4" >
+        <include file="$(find skros_service_tf_distance)/launch/default.launch">
+        <arg name="from_tf"     default="/iiwa_link_4"/>
+        <arg name="to_tf"       default="/LeftHand"/>
+        <arg name="distance"    default="/human_dist_lefthand2iiwa_link_4"/>
+        </include>
+    </group>
+
+    <group ns="human_dist_rightleg2iiwa_link_4" >
+        <include file="$(find skros_service_tf_distance)/launch/default.launch">
+        <arg name="from_tf"     default="/iiwa_link_4"/>
+        <arg name="to_tf"       default="/RightLeg"/>
+        <arg name="distance"    default="/human_dist_rightleg2iiwa_link_4"/>
+        </include>
+    </group>
+    <group ns="human_dist_leftleg2iiwa_link_4" >
+        <include file="$(find skros_service_tf_distance)/launch/default.launch">
+        <arg name="from_tf"     default="/iiwa_link_4"/>
+        <arg name="to_tf"       default="/LeftLeg"/>
+        <arg name="distance"    default="/human_dist_leftleg2iiwa_link_4"/>
+        </include>
+    </group>
+<!-- ###################################################################################################### -->
+    <group ns="dist_nose2hand" >
+        <include file="$(find skros_service_tf_distance)/launch/default.launch">
+        <arg name="from_tf"     default="/0_nose"/>
+        <arg name="to_tf"       default="/0_right_wrist"/>
+        <arg name="distance"    default="/dist_nose2hand"/>
+        </include>
+    </group>
+
+    <group ns="dist_human2fridge" >
+        <include file="$(find skros_service_tf_distance)/launch/default.launch">
+        <arg name="from_tf"     default="/finger_link_1"/>
+        <arg name="to_tf"       default="/door_down"/>
+        <arg name="distance"    default="/dist_human2fridge"/>
+        </include>
+    </group>
+
+    <group ns="dist_robot2gasket_up" >
+        <include file="$(find skros_service_tf_distance)/launch/default.launch">
+        <arg name="from_tf"     default="/finger_link_1"/>
+        <arg name="to_tf"       default="/gasket_up"/>
+        <arg name="distance"    default="/dist_robot2gasket_up"/>
+        </include>
+    </group>
+
+    <group ns="dist_robot2box" >
+        <include file="$(find skros_service_tf_distance)/launch/default.launch">
+        <arg name="from_tf"     default="/finger_link_1"/>
+        <arg name="to_tf"       default="/box"/>
+        <arg name="distance"    default="/dist_robot2box"/>
+        </include>
+    </group>
+
+
+    <group ns="dist_human2box" >
+        <include file="$(find skros_service_tf_distance)/launch/default.launch">
+        <arg name="from_tf"     default="/0_nose"/>
+        <arg name="to_tf"       default="/box"/>
+        <arg name="distance"    default="/dist_human2box"/>
+        </include>
+    </group>
+
+    <group ns="dist_human2robot" >
+        <include file="$(find skros_service_tf_distance)/launch/default.launch">
+        <arg name="from_tf"     default="/0_nose"/>
+        <arg name="to_tf"       default="/finger_link_1"/>
+        <arg name="distance"    default="/dist_human2robot"/>
+        </include>
+    </group>
+
+</launch>

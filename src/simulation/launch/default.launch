@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="simulation" type="simulation.sh" name="simulation" cwd="node" output="screen">
+        <param name="cmd" value="simulation.sh"/>
+    </node>
+</launch>

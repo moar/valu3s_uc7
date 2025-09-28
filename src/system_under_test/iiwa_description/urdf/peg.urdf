@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="base">
+ 	<link name="base_link">
+		<visual>
+		    <origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.019 0.1 0.009"/>
+			</geometry>
+			<material name="Cyan2">
+	       		<color rgba="0 0.7 0.7 1.0"/>
+	     	</material>
+		</visual>
+  
+  		<collision>
+		    <origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.019 0.1 0.009"/>
+			</geometry>			
+		</collision>
+  
+	</link>
+
+ 	<link name="medium_link">
+		<visual>
+		    <origin xyz="0 0.0 0.01" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.009 0.1 0.011"/>
+			</geometry>
+			<material name="Cyan2">
+	       		<color rgba="0 0.7 0.7 1.0"/>
+	     	</material>
+		</visual>
+        <collision>
+		    <origin xyz="0 0.0 0.01" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.009 0.1 0.011"/>
+			</geometry>
+		</collision>
+	</link>
+
+ 	<link name="upper_link">
+		<visual>
+		    <origin xyz="0 0.0 0.0255" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.019 0.1 0.02"/>
+			</geometry>
+			<material name="Cyan2">
+	       		<color rgba="0 0.7 0.7 1.0"/>
+	     	</material>
+		</visual>
+        <collision>
+		    <origin xyz="0 0.0 0.0255" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.019 0.1 0.02"/>
+			</geometry>
+		</collision>
+	</link>
+
+    <joint
+    name="joint_base_link_medium_link"
+    type="fixed">
+    <parent
+      link="base_link" />
+    <child
+      link="medium_link" />
+    </joint>
+
+    <joint
+    name="joint_medium_link_upper_link"
+    type="fixed">
+    <parent
+      link="medium_link" />
+    <child
+      link="upper_link" />
+    </joint>
+
+</robot>

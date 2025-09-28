@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="real_camera" default="false"/>
+    <arg name="real_skeleton" default="false"/> 
+    <arg name="fake_skeleton" default="false"/>    
+    <arg name="sim_rviz" default="false"/>
+    <arg name="headless" default="false"/>
+    <arg name="moveit" default="false"/>
+    <arg name="detector" default="false"/>
+    <arg name="save_im" default="false"/>  <!-- set to true to save images -->
+
+    <group if="$(arg real_camera)">
+
+        <!-- Load camera cam1 -->
+        <!-- Get serial of realsense camera using "rs-enumerate-devices"-->
+        <group ns="cam2" >        
+            <include file="$(find skros_device_camera_realsense)/launch/default.launch">
+                <arg name="tf_prefix" value="cam2"/>
+            </include>   
+        </group>
+
+        <node pkg="tf" type="static_transform_publisher" name="cam2_link_broadcaster" 
+            args="-0.648464 -0.360998 1.49819  -0.0105235 0.276448 0.0364986 0.959951 world cam2_link 50" />
+
+        <node pkg="tf" type="static_transform_publisher" name="internal_sensor_link_broadcaster" 
+            args="0 0 0 -1.57 0 -1.57  cam2_link sensor 50" />
+
+        <!-- Load camera cam1 -->
+        <!-- <group ns="cam2" >
+            <include file="$(find skros_device_camera_realsense)/launch/pointcloud.launch">
+                <arg name="serial_no" value="f1270852"/>
+                <arg name="tf_prefix" value="cam2"/>
+            </include>
+        </group> -->
+        <!-- <node pkg="tf" type="static_transform_publisher" name="cam2_link_broadcaster" args="-1.0 0.0 2.0 0 0.785 0 world cam2_link 100" /> -->
+        <!--node pkg="tf" type="static_transform_publisher" name="cam2_link_broadcaster" args="2.0 0.0 2.0 3.1416 0.785 0 world cam2_link 100" /-->
+
+    </group>
+
+    <group if="$(arg fake_skeleton)">
+        <!-- Load fake skeleton tracking -->
+        <include file="$(find skros_service_skeletonPublisher)/launch/default.launch">
+            <arg name="tf_reference_link"       value="world"/>
+            <arg name="headless"                value="$(arg headless)"/>
+        </include>
+    </group>
+
+    <group if="$(arg real_skeleton)">
+        <!-- Load skeleton tracking -->
+        <include file="$(find skros_service_recognition_skeletonTracking)/launch/default.launch">
+            <arg name="topic_rgb"               value="/cam2/skros_device_camera_realsense/color/image_raw"/>
+            <arg name="topic_depth"             value="/cam2/skros_device_camera_realsense/aligned_depth_to_color/image_raw"/>
+            <arg name="topic_info"              value="/cam2/skros_device_camera_realsense/color/camera_info"/>
+            <arg name="backend"                 value="yolo"/>   <!-- options: mediapipe, yolo -->
+            <arg name="tf_reference_link"       value="sensor"/>
+            <arg name="headless"                value="$(arg headless)"/>
+        </include>
+    </group>
+
+    <group if="$(arg sim_rviz)">
+        <node type="rviz" name="rviz" pkg="rviz" args="-d $(find skros_task_valu3s)/valu3s.config.rviz" />
+    </group>
+
+    <group if="$(arg moveit)">
+        <include file="$(find iiwa14_moveit_config)/launch/default.launch">
+            <arg name="use_rviz"                value="false"/>
+        </include>
+    </group>
+
+    <group if="$(arg detector)">
+        <!-- Load object detector -->
+        <include file="$(find skros_service_objectDetection)/launch/default.launch">
+            <arg name="topic_rgb"               value="rgb"/>  <!-- "/cam2/skros_device_camera_realsense/color/image_raw"/-->
+            <arg name="backend"                 value="yolo"/>   <!-- options: mediapipe, yolo -->
+            <arg name="headless"                value="$(arg headless)"/>
+            <arg name="save_im"                 value="$(arg save_im)"/>  <!-- set to true to save images -->
+        </include>
+    </group>
+
+</launch>

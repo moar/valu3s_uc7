@@ -1,0 +1,28 @@
+<launch>
+
+  <!-- Use sim clock-->
+  <param name="/use_sim_time" value="true" />
+  <!-- Start issac sim and valu3s  simulation-->
+  <include file="$(find simulation)/launch/default.launch">
+  </include>
+  <!-- Run mqtt brdige to communicate with ULISES-->
+
+  <include file="$(find mqtt_bridge)/launch/demo.launch">
+  </include>
+
+
+  <!-- Run Ros distance service that send distances as topics using TF-->
+  <include file="$(find skros_service_tf_distance)/launch/default_demo.launch">
+  </include>
+  <!-- Start Run Moveit for iiwa Simulation Robot -->
+  <include file="$(find iiwa_moveit_config)/launch/default.launch">
+  </include>
+  <!-- rosbag-->
+  <node pkg="rosbag" type="record" name="rosbag_record"
+       args="record -a -o froga_rostest.bag"/>
+  <!-- Ejecutar los tests con rostest -->
+  <param name="result_file" value="rostest.xml"/>
+
+  <arg name="node_start_delay" default="20" />
+  <test  test-name="uc7_hiru"  pkg="valu3s_uc7" type="test_uc7_hiru.py" cwd="node" time-limit="1000.0"/>
+</launch>

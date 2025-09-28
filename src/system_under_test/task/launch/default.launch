@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+    <node name="task" pkg="task" type="task.py" output="screen" cwd="node">
+    </node>
+</launch>

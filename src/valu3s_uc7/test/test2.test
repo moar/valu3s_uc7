@@ -1,0 +1,9 @@
+<launch>
+  <!-- Ejecutar los tests con rostest -->
+   <param name="result_file" value="rostest.xml"/>
+
+  <test  test-name="uc7_bat"  pkg="valu3s_uc7" type="test_uc7_bat.py" cwd="node" time-limit="1000.0"/>
+  <test  test-name="uc7_bat_bigarrena"  pkg="valu3s_uc7" type="test_uc7_bat.py" cwd="node" time-limit="1000.0"/>
+
+
+</launch>

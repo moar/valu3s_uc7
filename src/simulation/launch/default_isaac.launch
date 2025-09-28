@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="simulation" type="start_isaac.sh" name="start_isaac" cwd="node" output="screen">
+        <param name="cmd" value="start_isaac.sh"/>
+    </node>
+</launch>

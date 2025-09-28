@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: iiwa_description
+    relative_path: urdf/iiwa14_custom_gripper.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/iiwa14.srdf
+  CONFIG:
+    author_name: todo
+    author_email: todo@todo.com
+    generated_timestamp: 1651050479
